@@ -7,7 +7,7 @@ async function listContacts() {
   try {
     const data = await fs.readFile(contactsPath);
     const contacts = JSON.parse(data);
-    console.table(contacts);
+    // console.table(contacts);
     return contacts;
   } catch (error) {
     console.log(error.message);
@@ -40,7 +40,7 @@ async function addContact(name, email, phone) {
       phone,
     };
     contacts.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(contacts));
+    await listContacts(contacts);
     console.table(contacts);
     return contacts;
   } catch (error) {
